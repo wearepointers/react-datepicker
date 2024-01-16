@@ -3,15 +3,13 @@
 Modular date picker component for React using the native date class. Supports single, multiple and range.
 
 ## Features
-- ✅ Select single date
-- ✅ Select multiple dates
-- ✅ Select date range
-- ✅ Use shortcuts to select a date range
-- ✅ TypeScript support
-- ✅ Locale support
-- ✅ Modular
-
-### Todo
+- [x] Select single date
+- [x] Select multiple dates
+- [x] Select date range
+- [x] Use shortcuts to select a date range
+- [x] TypeScript support
+- [x] Locale support
+- [x] Modular
 - [ ] Localization(i18n)
 - [ ] Disable specific dates
 - [ ] Minimum Date and Maximum Date
