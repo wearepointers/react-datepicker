@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 126 85 216;
+    --primary-foreground: 255 255 255;
+  }
+
+  .dark {
+    --primary: 126 85 216;
+    --primary-foreground: 255 255 255;
+  }
+}
+
+@layer base {
+  body {
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "NextJS Typescript Functional Page": {
+    "scope": "javascriptreact,typescriptreact",
+    "prefix": "np",
+    "body": ["import * as React from 'react';", "", "export default function Page() {", "  return <></>;", "};"],
+    "description": "Creates a React functional Page component with TypeScript"
+  },
+  "React Typescript Functional Component": {
+    "scope": "javascriptreact,typescriptreact",
+    "prefix": "rh",
+    "body": [
+      "import * as React from 'react';",
+      "",
+      "interface Props {}",
+      "",
+      "export default function ${TM_FILENAME_BASE}({}: Props) {",
+      "  return <></>;",
+      "};"
+    ],
+    "description": "Creates a React functional component with TypeScript"
+  }
+}

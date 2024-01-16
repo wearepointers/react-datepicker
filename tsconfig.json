@@ -19,6 +19,13 @@
       }
     ],
     "paths": {
+      "@utils": ["./src/utils/index"],
+      "@utils/*": ["./src/utils/*"],
+
+      "@types": ["./src/types/index"],
+      "@types/*": ["./src/types/*"],
+
+      "@styles/*": ["./styles/*"],
       "@/*": ["./src/*"]
     }
   },
