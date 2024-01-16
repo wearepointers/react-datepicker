@@ -47,15 +47,23 @@ yarn add @expanselabs/react-datepicker
 Clone the repository and run the following commands:
 
 ### Using pnpm
+```
 pnpm i && pnpm dev
+```
 
 ### Using npm
+```
 npm i && npm dev
-
+```
 ### Using yarn
+```
 yarn install && yarn dev
-
+```
 The playground runs on `http://localhost:3000`
 
 ## Contributing
-See CONTRIBUTING.md
+See [CONTRIBUTING.md](https://github.com/expanse-agency/react-datepicker/blob/main/CONTRIBUTING.md)
+
+## License
+
+[MIT](LICENSE) Licensed. Copyright (c) Lewhe Onesine 2022.
