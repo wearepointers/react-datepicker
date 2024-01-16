@@ -14,11 +14,17 @@ interface Props extends DatepickerConfig {
   onChange: (date: DatepickerValue) => void;
 }
 
-export default function Datepicker({ value, onChange, ...config }: Props) {
+export default function Datepicker({ value, onChange, ...rest }: Props) {
   const [month, setMonth] = React.useState({
     month: new Date().getMonth(),
     year: new Date().getFullYear()
   });
+
+  const config = {
+    ...rest,
+    dir: rest.dir || 'ltr',
+    type: rest.type || 'single'
+  };
 
   const { label, hasValue } = displayDateValue(value, config);
 
@@ -46,7 +52,7 @@ export default function Datepicker({ value, onChange, ...config }: Props) {
       </Popover.Trigger>
 
       <Popover.Portal>
-        <Popover.Content align="start" sideOffset={8} className="mx-2">
+        <Popover.Content align="start" sideOffset={8} className="">
           {config.expand ? (
             <DatepickerExpanded config={config} value={value} onChange={onChange} />
           ) : (

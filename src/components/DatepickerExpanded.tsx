@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { DatepickerConfig, DatepickerValue, DateRange } from '@types';
-import { getNextMonthAndYear, getPreviousMonthAndYear } from '@utils';
+import { dateValueType, getNextMonthAndYear, getPreviousMonthAndYear } from '@utils';
 
 import DatepickerCalendar from './DatepickerCalendar';
 import DatepickerExpandedFooter from './DatepickerExpandedFooter';
@@ -21,7 +21,8 @@ export default function DatepickerExpanded({ value, onChange, config }: Props) {
   });
 
   const onApply = () => {
-    if (config.type !== 'range') return;
+    const type = dateValueType(value, config);
+    if (type !== 'range') return;
     const r = internalValue as DateRange;
     if (!r.startDate || !r.endDate) return;
 
@@ -38,13 +39,17 @@ export default function DatepickerExpanded({ value, onChange, config }: Props) {
   };
 
   return (
-    <div className="border-1 relative inline-flex w-min flex-col flex-wrap divide-y divide-inherit rounded-xl border-gray-100 px-0 shadow-sm md:w-auto md:flex-row md:divide-x md:divide-y-0">
+    <div className="border-1 relative inline-flex w-min flex-col flex-wrap divide-y divide-inherit rounded-xl border-gray-100 bg-white px-0 shadow-sm md:w-auto md:flex-row md:divide-x md:divide-y-0">
       {hasShortcuts && <DatepickerExpandedShortcuts {...props} />}
       <div className="inline-flex flex-col divide-y divide-gray-100">
         <div className="inline-flex  divide-x divide-gray-100">
           <DatepickerCalendar {...props} month={month} onChangeMonth={setMonth} />
           <div className="hidden sm:inline-flex">
-            <DatepickerCalendar {...props} month={getNextMonthAndYear(month)} onChangeMonth={(m) => setMonth(getPreviousMonthAndYear(m))} />
+            <DatepickerCalendar
+              {...props}
+              month={config.dir === 'rtl' ? getPreviousMonthAndYear(month) : getNextMonthAndYear(month)}
+              onChangeMonth={(m) => setMonth(config.dir === 'rtl' ? getNextMonthAndYear(m) : getPreviousMonthAndYear(m))}
+            />
           </div>
         </div>
         {hasFooter && <DatepickerExpandedFooter onApply={onApply} {...props} />}

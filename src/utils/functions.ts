@@ -1,22 +1,20 @@
-import type { DatepickerCalendarDate, DatepickerConfig, DatepickerMonth, DatepickerValue, DateRange, DateRangeType } from '@types';
+import type { DatepickerConfig, DatepickerMonth, DatepickerValue, DateRange, DateRangeType } from '@types';
 
-import { dateEndDay, dateIsEq, dateIsToday, dateStartDay } from './date';
+import { dateEndDay, dateIsEq, dateStartDay } from './date';
 
 export function generate42CalendarDates(month: DatepickerMonth, config: DatepickerConfig) {
-  const weeks: DatepickerCalendarDate[][] = [];
+  const weeks: Date[][] = [];
   let currentDate = new Date(month.year, month.month, 1);
   currentDate.setDate(currentDate.getDate() - ((currentDate.getDay() + (config.weeksStartOnMonday ? 6 : 0)) % 7)); // Adjust to Monday as the first day
 
   for (let i = 0; i < 6; i++) {
-    const week: DatepickerCalendarDate[] = [];
+    const week: Date[] = [];
     for (let j = 0; j < 7; j++) {
-      week.push({
-        day: currentDate.getDate(),
-        isInSelectedMonth: currentDate.getMonth() === month.month,
-        isToday: dateIsToday(currentDate),
-        date: new Date(currentDate)
-      });
+      week.push(new Date(currentDate));
       currentDate.setDate(currentDate.getDate() + 1);
+    }
+    if (config.dir === 'rtl') {
+      week.reverse(); // Reverse the week array if config.dir is 'ltr'
     }
     weeks.push(week);
   }
@@ -84,22 +82,23 @@ export function displayDateRange(d: DatepickerValue, config: DatepickerConfig) {
 
 export function displayDateValue(d: DatepickerValue, config: DatepickerConfig) {
   if (!d) return { label: displayPlaceholder(config), hasValue: false };
+  const type = dateValueType(d, config);
 
-  if (config.type === 'single') {
+  if (type === 'single') {
     return {
       label: formatDateString(d as Date, config),
       hasValue: true
     };
   }
 
-  if (config.type === 'multiple') {
+  if (type === 'multiple' && Array.isArray(d)) {
     return {
       label: (d as Date[]).map((date) => formatDateString(date, config)).join(', '),
       hasValue: true
     };
   }
 
-  if (config.type === 'range') {
+  if (type === 'range') {
     const range = d as DateRange;
     if (range.startDate && range.endDate) {
       return {
@@ -200,4 +199,11 @@ export function isEqualToRange(d: DatepickerValue, r: DateRangeType) {
 export function displayDateRangeType(r: DateRangeType, config: DatepickerConfig) {
   const s = r.replaceAll('_', ' ');
   return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+export function dateValueType(d: DatepickerValue, config: DatepickerConfig) {
+  if (!d) return config.type;
+  if (!Array.isArray(d) && config.type === 'single') return 'single';
+  if (Array.isArray(d) && config.type === 'multiple') return 'multiple';
+  if (typeof d === 'object' && !Array.isArray(d) && config.type === 'range') return 'range';
 }

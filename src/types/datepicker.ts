@@ -2,21 +2,15 @@ export type DatepickerType = 'single' | 'multiple' | 'range';
 
 export interface DatepickerConfig {
   weeksStartOnMonday?: boolean;
-  type: DatepickerType;
+  type?: DatepickerType;
   placeholder?: string;
   locale?: string;
   expand?: boolean;
   shortcuts?: boolean;
   footer?: boolean;
+  dir?: 'ltr' | 'rtl';
 }
 export type DatepickerValue = Date | Date[] | DateRange | undefined;
-
-export interface DatepickerCalendarDate {
-  date: Date;
-  day: number;
-  isInSelectedMonth: boolean;
-  isToday: boolean;
-}
 
 export interface DatepickerMonth {
   month: number;

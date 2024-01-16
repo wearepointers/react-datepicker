@@ -28,15 +28,24 @@ interface Props extends VariantProps<typeof variants> {
 
 export default function DatepickerCalendar({ config, value, onChange, month, onChangeMonth, ...v }: Props) {
   const toPreviousMonth = () => {
+    if (config.dir === 'rtl') {
+      onChangeMonth(getNextMonthAndYear(month));
+      return;
+    }
     onChangeMonth(getPreviousMonthAndYear(month));
   };
 
   const toNextMonth = () => {
+    if (config.dir === 'rtl') {
+      onChangeMonth(getPreviousMonthAndYear(month));
+      return;
+    }
+
     onChangeMonth(getNextMonthAndYear(month));
   };
 
   return (
-    <div className="inline-flex">
+    <div className="inline-flex bg-white">
       <div className={twMerge(variants(v))}>
         <DatepickerCalendarMonth config={config} month={month} toNextMonth={toNextMonth} toPreviousMonth={toPreviousMonth} />
         <DatepickerCalendarDates config={config} month={month} value={value} onChange={onChange} />

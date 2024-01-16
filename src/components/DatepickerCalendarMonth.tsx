@@ -1,5 +1,4 @@
 import { DatepickerConfig, DatepickerMonth } from '@types';
-import { months } from '@utils';
 
 interface Props {
   config: DatepickerConfig;
@@ -18,7 +17,7 @@ export default function DatepickerCalendarMonth({ config, month, toPreviousMonth
       </DatepickerCalendarMonthNavigate>
       <div className="flex flex-1 items-center justify-center">
         <span className="text-sm font-medium text-gray-900">
-          {months[month.month].name} {month.year}
+          {new Date(month.year, month.month).toLocaleDateString(config.locale, { month: 'long', year: 'numeric' })}
         </span>
       </div>
       <DatepickerCalendarMonthNavigate onClick={toNextMonth}>
