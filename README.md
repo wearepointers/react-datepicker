@@ -66,4 +66,4 @@ See [CONTRIBUTING.md](https://github.com/expanse-agency/react-datepicker/blob/ma
 
 ## License
 
-[MIT](LICENSE) Licensed. Copyright (c) Lewhe Onesine 2022.
+[MIT](LICENSE) Licensed. Copyright (c) Expanse Agency 2024
