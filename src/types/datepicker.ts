@@ -6,9 +6,11 @@ export interface DatepickerConfig {
   placeholder?: string;
   locale?: string;
   expand?: boolean;
-  shortcuts?: boolean;
+  shortcuts?: boolean | Partial<Record<DateRangeType, string>>;
   footer?: boolean;
   dir?: 'ltr' | 'rtl';
+  max?: number;
+  min?: number;
 }
 export type DatepickerValue = Date | Date[] | DateRange | undefined;
 

@@ -33,3 +33,7 @@ export function dateStartDay(d: Date) {
 export function dateEndDay(d: Date) {
   return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 23, 59, 59, 999);
 }
+
+export function dateDifferenceInDays(d1: Date, d2: Date) {
+  return Math.round((dateWithoutTime(d2).getTime() - dateWithoutTime(d1).getTime()) / (1000 * 3600 * 24));
+}

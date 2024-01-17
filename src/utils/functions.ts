@@ -91,7 +91,7 @@ export function displayDateValue(d: DatepickerValue, config: DatepickerConfig) {
     };
   }
 
-  if (type === 'multiple' && Array.isArray(d)) {
+  if (type === 'multiple' && Array.isArray(d) && (d as Date[]).length > 0) {
     return {
       label: (d as Date[]).map((date) => formatDateString(date, config)).join(', '),
       hasValue: true
@@ -181,6 +181,7 @@ export function getDateRange(r: DateRangeType): DateRange | undefined {
 }
 
 export function isEqualToRange(d: DatepickerValue, r: DateRangeType) {
+  if (r === 'all_time' && !d) return true;
   if (!d) return false;
 
   const range = d as DateRange;
@@ -197,6 +198,10 @@ export function isEqualToRange(d: DatepickerValue, r: DateRangeType) {
 }
 
 export function displayDateRangeType(r: DateRangeType, config: DatepickerConfig) {
+  if (typeof config.shortcuts === 'object' && config.shortcuts?.[r] !== undefined) {
+    return config.shortcuts[r] as string;
+  }
+
   const s = r.replaceAll('_', ' ');
   return s.charAt(0).toUpperCase() + s.slice(1);
 }

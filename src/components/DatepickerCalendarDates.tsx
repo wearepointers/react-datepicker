@@ -2,6 +2,7 @@ import React from 'react';
 
 import { DatepickerConfig, DatepickerMonth, DatepickerValue, DateRange } from '@types';
 import {
+  dateDifferenceInDays,
   dateIsEq,
   dateIsLess,
   dateIsLessOrEq,
@@ -44,7 +45,7 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
       days.reverse();
     }
     return days;
-  }, [config.locale, config.weeksStartOnMonday]);
+  }, [config.dir, config.locale, config.weeksStartOnMonday]);
 
   const isSelected = React.useCallback(
     (date: Date) => {
@@ -91,7 +92,15 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
         const dates = (value as Date[]) || [];
         const f = dates.find((sd) => dateIsEq(sd, d));
         if (f) {
+          if (config.min && dates.length <= config.min) {
+            return;
+          }
+
           return onChange(dates.filter((sd) => !dateIsEq(sd, d)));
+        }
+
+        if (config.max && dates.length + 1 > config.max) {
+          return;
         }
 
         return onChange([...dates, d]);
@@ -170,6 +179,66 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
     [config.type, value]
   );
 
+  const isDisabled = React.useCallback(
+    (date: Date) => {
+      const type = dateValueType(value, config);
+      if (type === 'single') {
+        return false;
+      }
+
+      if (type === 'multiple') {
+        const dates = (value as Date[]) || [];
+        if (config.max && dates.length >= config.max && !dates.find((sd) => dateIsEq(sd, date))) {
+          return true;
+        }
+      }
+
+      if (type === 'range') {
+        const startDate = (value as DateRange)?.startDate;
+        const endDate = (value as DateRange)?.endDate;
+
+        if (startDate && endDate && (config.max || config.min)) {
+          const diff = dateDifferenceInDays(startDate, endDate);
+          const max = (config.max || 0) - diff;
+
+          const startDiff = dateDifferenceInDays(startDate, date);
+          const endDiff = dateDifferenceInDays(endDate, date);
+
+          if (startDiff > 0) {
+            if (config.min && startDiff <= config.min) {
+              return true;
+            }
+          }
+
+          if (config.max) {
+            return (endDiff > max && endDiff > 0) || (startDiff < -max && startDiff < 0);
+          }
+
+          return false;
+        }
+
+        if (startDate && (config.max || config.min)) {
+          const diff = dateDifferenceInDays(startDate, date);
+
+          if (diff < 0) {
+            if ((config.min && diff >= -config.min) || (config.max && diff <= -config.max)) {
+              return true;
+            }
+          }
+
+          if (diff > 0) {
+            if ((config.min && diff <= config.min) || (config.max && diff >= config.max)) {
+              return true;
+            }
+          }
+        }
+      }
+
+      return false;
+    },
+    [value, config]
+  );
+
   return (
     <table className="border-collapse" role="grid">
       <thead>
@@ -187,15 +256,16 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
             {week.map((day) => (
               <DatepickerCalendarDatesItem
                 key={day.toString()}
+                dir={config.dir}
                 label={day.getDate().toLocaleString(config.locale)}
                 focussed={day.getMonth() === month.month}
                 onClick={() => onClick(day)}
                 selected={isSelected(day)}
+                disabled={isDisabled(day)}
                 withDot={dateIsToday(day)}
                 isInRange={isInRange(day)}
                 isEndRange={isEndRange(day)}
                 isSameDay={isSameDay(day)}
-                dir={config.dir}
               />
             ))}
           </tr>

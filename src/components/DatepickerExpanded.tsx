@@ -24,7 +24,7 @@ export default function DatepickerExpanded({ value, onChange, config }: Props) {
     const type = dateValueType(value, config);
     if (type !== 'range') return;
     const r = internalValue as DateRange;
-    if (!r.startDate || !r.endDate) return;
+    if (r && (!r.startDate || !r.endDate)) return;
 
     onChange(internalValue);
   };
@@ -40,7 +40,7 @@ export default function DatepickerExpanded({ value, onChange, config }: Props) {
 
   return (
     <div className="border-1 relative inline-flex w-min flex-col flex-wrap divide-y divide-inherit rounded-xl border-gray-100 bg-white px-0 shadow-sm md:w-auto md:flex-row md:divide-x md:divide-y-0">
-      {hasShortcuts && <DatepickerExpandedShortcuts {...props} />}
+      {hasShortcuts && <DatepickerExpandedShortcuts {...props} closeAfterClick={!hasFooter} />}
       <div className="inline-flex flex-col divide-y divide-gray-100">
         <div className="inline-flex  divide-x divide-gray-100">
           <DatepickerCalendar {...props} month={month} onChangeMonth={setMonth} />

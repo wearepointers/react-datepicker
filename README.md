@@ -10,7 +10,8 @@ Modular date picker component for React using the native date class. Supports si
 - [x] TypeScript support
 - [x] Locale support
 - [x] Modular
-- [ ] Localization(i18n)
+- [x] Localization
+- [x] Min, Max select dates
 - [ ] Disable specific dates
 - [ ] Minimum Date and Maximum Date
 - [ ] Bring your own styles
