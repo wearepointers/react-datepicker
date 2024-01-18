@@ -22,12 +22,9 @@ jobs:
         with:
           node-version: '18.x'
           cache: 'pnpm'
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies 🔧
         run: pnpm install
 
       - name: Publish package on NPM 📦
-        run: pnpm code-style
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: pnpm ode-style
