@@ -35,7 +35,7 @@
     "watch": "bunchee --watch",
     "clean": "rm -rf dist",
     "build": "pnpm run code-style:fix && pnpm run clean && bunchee",
-    "pub": "pnpm run build && pnpm publish",
+    "pub": "pnpm run build && pnpm publish --no-git-checks",
     "lint": "eslint . --ignore-path .gitignore --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ignore-path .gitignore --report-unused-disable-directives --max-warnings 0 --fix",
     "fmt:fix": "prettier --cache --write \"src/**/*.ts\" \"src/**/*.tsx\"",
