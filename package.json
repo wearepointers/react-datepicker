@@ -30,6 +30,27 @@
       }
     }
   },
+  "keywords": [
+    "react-datepicker",
+    "react-daterangepicker",
+    "react-tailwind-datepicker",
+    "react-tailwind-daterangepicker",
+    "react-tailwindcss-datepicker",
+    "react-tailwindcss-daterangepicker",
+    "tailwindcss-datepicker",
+    "tailwindcss-daterangepicker",
+    "tailwind-datepicker",
+    "tailwind-daterangepicker",
+    "datepicker",
+    "date-picker",
+    "daterange",
+    "date-range",
+    "daterangepicker",
+    "daterange-picker",
+    "date-range-picker",
+    "rangepicker",
+    "range-picker"
+  ],
   "scripts": {
     "dev": "next dev",
     "watch": "bunchee --watch",
