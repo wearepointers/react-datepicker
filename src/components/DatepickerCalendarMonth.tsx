@@ -18,13 +18,15 @@ export default function DatepickerCalendarMonth({ config, month, toPreviousMonth
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-5">
+            className="size-5"
+          >
             <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
           </svg>
         )}
       </DatepickerCalendarMonthNavigate>
       <div
-        className={config.classNames?.calendarHeaderMonth || 'flex flex-1 items-center justify-center text-sm font-medium text-gray-900'}>
+        className={config.classNames?.calendarHeaderMonth || 'flex flex-1 items-center justify-center text-sm font-medium text-gray-900'}
+      >
         {new Date(month.year, month.month).toLocaleDateString(config.locale, { month: 'long', year: 'numeric' })}
       </div>
       <DatepickerCalendarMonthNavigate onClick={toNextMonth} config={config}>
@@ -35,7 +37,8 @@ export default function DatepickerCalendarMonth({ config, month, toPreviousMonth
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="size-5">
+            className="size-5"
+          >
             <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
           </svg>
         )}
@@ -59,7 +62,8 @@ function DatepickerCalendarMonthNavigate({
       className={
         config.classNames?.calendarHeaderIconButton ||
         'flex size-8 items-center justify-center rounded-full text-gray-700 hover:bg-gray-100'
-      }>
+      }
+    >
       {children}
     </button>
   );

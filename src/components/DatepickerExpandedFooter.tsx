@@ -27,12 +27,14 @@ export default function DatepickerExpandedFooter({ value, onApply, config }: Pro
       </div>
       <div className={config.classNames?.footerButtonsWrapper || 'inline-flex items-center gap-2'}>
         <Popover.PopoverClose
-          className={config.classNames?.footerCloseButton || 'border-1 rounded-md border-gray-200 px-5 py-2 text-sm  text-gray-500'}>
+          className={config.classNames?.footerCloseButton || 'border-1 rounded-md border-gray-200 px-5 py-2 text-sm  text-gray-500'}
+        >
           Close
         </Popover.PopoverClose>
         <Popover.PopoverClose
           onClick={onApply}
-          className={config.classNames?.footerApplyButton || 'bg-primary text-primary-foreground rounded-md px-5 py-2 text-sm'}>
+          className={config.classNames?.footerApplyButton || 'bg-primary text-primary-foreground rounded-md px-5 py-2 text-sm'}
+        >
           Apply
         </Popover.PopoverClose>
       </div>

@@ -18,7 +18,8 @@ export default function DatepickerExpandedShortcutsItem({ label, onClick, closeA
       }
       type="button"
       aria-selected={!!selected}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       {label}
     </button>
   );

@@ -267,7 +267,7 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
 
       return false;
     },
-    [value, config]
+    [isInDisabledRange, value, config]
   );
 
   return (

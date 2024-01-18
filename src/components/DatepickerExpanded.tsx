@@ -43,7 +43,8 @@ export default function DatepickerExpanded({ value, onChange, config }: Props) {
       className={
         config.classNames?.expanded ||
         'border-1 relative inline-flex w-min flex-col flex-wrap divide-y divide-inherit rounded-xl border-gray-100 bg-white px-0 shadow-sm md:w-auto md:flex-row md:divide-x md:divide-y-0'
-      }>
+      }
+    >
       {hasShortcuts && <DatepickerExpandedShortcuts {...props} closeAfterClick={!hasFooter} />}
       <div className={config.classNames?.expandedContainer || 'inline-flex flex-col divide-y divide-gray-100'}>
         <div className={config.classNames?.expandedCalendarsWrapper || 'inline-flex divide-x divide-gray-100'}>
