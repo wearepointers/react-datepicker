@@ -35,16 +35,14 @@ export default function Datepicker({ value, onChange, ...rest }: Props) {
         className={twMerge(
           'border-1 font-regular relative flex items-center justify-center gap-2 rounded-md border-gray-100 px-4 py-2 text-sm text-gray-900 shadow-xs',
           !hasValue && 'text-gray-500'
-        )}
-      >
+        )}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="size-5 text-gray-500"
-        >
+          className="size-5 text-gray-500">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -59,7 +57,14 @@ export default function Datepicker({ value, onChange, ...rest }: Props) {
           {config.expand ? (
             <DatepickerExpanded config={config} value={value} onChange={onChange} />
           ) : (
-            <DatepickerCalendar config={config} value={value} onChange={onChange} month={month} onChangeMonth={setMonth} standalone />
+            <DatepickerCalendar
+              config={config}
+              value={value}
+              onChange={onChange}
+              month={month}
+              onChangeMonth={setMonth}
+              className="border-1 relative rounded-xl border-gray-100 px-4 py-3 shadow-sm"
+            />
           )}
         </Popover.Content>
       </Popover.Portal>

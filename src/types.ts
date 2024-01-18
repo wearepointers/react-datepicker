@@ -11,7 +11,11 @@ export interface DatepickerConfig {
   dir?: 'ltr' | 'rtl';
   max?: number;
   min?: number;
+  classNames?: DatepickerConfigClassNames;
 }
+
+export interface DatepickerConfigClassNames {}
+
 export type DatepickerValue = Date | Date[] | DateRange | undefined;
 
 export interface DatepickerMonth {
