@@ -26,5 +26,5 @@ jobs:
       - name: Install dependencies 🔧
         run: pnpm install
 
-      - name: Publish package on NPM 📦
-        run: pnpm ode-style
+      - name: Lint 🧹
+        run: pnpm code-style
