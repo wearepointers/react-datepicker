@@ -9,15 +9,15 @@ import { displayDateValue } from '@utils';
 import DatepickerCalendar from './DatepickerCalendar';
 import DatepickerExpanded from './DatepickerExpanded';
 
-interface ButtonProps {
+interface ButtonProps<T extends DatepickerValue> {
   label?: string;
-  value?: DatepickerValue;
+  value?: T;
 }
 
 interface Props<T extends DatepickerValue> extends DatepickerConfig {
   value: T;
   onChange: (date: T) => void;
-  children?: (props: ButtonProps) => React.ReactNode;
+  children?: (props: ButtonProps<T>) => React.ReactNode;
 }
 
 export default function Datepicker<T extends DatepickerValue>({ value, onChange, children, ...props }: Props<T>) {
@@ -39,7 +39,10 @@ export default function Datepicker<T extends DatepickerValue>({ value, onChange,
       {/* @ts-ignore - Does not see child when compiling*/}
       <Popover.Trigger asChild>
         {children ? (
-          children(displayValue)
+          children({
+            label: displayValue.label,
+            value: displayValue.value as T
+          })
         ) : (
           <button
             className={twMerge(

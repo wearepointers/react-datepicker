@@ -4,6 +4,7 @@ import React from 'react';
 
 import Datepicker from '@/index';
 
+// These are all possible props for the Datepicker component
 export default function Page() {
   const [date, setDate] = React.useState<Date>();
   const [multipleDate, setMultipleDate] = React.useState<Date[]>();
@@ -33,7 +34,7 @@ export default function Page() {
         }}
       />
       <Datepicker type="single" value={date} onChange={setDate} placeholder="Single - Custom button">
-        {(props) => <button>{props.label}</button>}
+        {(props) => <button>{JSON.stringify(props.value)}</button>}
       </Datepicker>
       <Datepicker
         type="single"

@@ -1,5 +1,8 @@
 # React Datepicker
 
+<img alt="React Tailwindcss Datepicker" width="100" style="border-radius: 100%;" src="https://raw.githubusercontent.com/expanse-agency/react-datepicker/main/assets/calendar-icon.svg?raw=true">
+
+
 Modular date picker component for React using the native date class. Supports single, multiple and range.
 
 ## Features
@@ -15,9 +18,8 @@ Modular date picker component for React using the native date class. Supports si
 - ✅ Bring your own styles
 - ✅ Disable specific dates
 - ✅ Minimum Date and Maximum Date
+- ✅ Custom date format
 
-## Roadmap
-- [ ] Custom date format
 
 ## Installation
 
