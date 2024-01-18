@@ -23,19 +23,19 @@ Modular date picker component for React using the native date class. Supports si
 
 ### Install via pnpm
 
-```bash
+```sh
 pnpm install @expanselabs/react-datepicker
 ```
 
 ### Install via npm
 
-```bash
+```sh
 npm install @expanselabs/react-datepicker
 ```
 
 ### Install via yarn
 
-```bash
+```sh
 yarn add @expanselabs/react-datepicker
 ```
 
@@ -46,7 +46,7 @@ yarn add @expanselabs/react-datepicker
 ## Usage
 This is an example usage with different modes. Go to the [example](./app/page.tsx) to see all possible options.
 
-```tsx
+```jsx
 import * as React from 'react';
 
 import Datepicker from '@expanseagency/react-datepicker';
@@ -73,16 +73,16 @@ export default function Page() {
 Clone the repository and run the following commands:
 
 ### Using pnpm
-```bash
+```sh
 pnpm i && pnpm dev
 ```
 
 ### Using npm
-```bash
+```sh
 npm i && npm dev
 ```
 ### Using yarn
-```bash
+```sh
 yarn install && yarn dev
 ```
 The playground runs on `http://localhost:3000`
