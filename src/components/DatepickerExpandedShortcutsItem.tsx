@@ -13,7 +13,8 @@ export default function DatepickerExpandedShortcutsItem({ label, onClick, closeA
       className={'rounded-md px-4 py-2 text-start text-sm text-gray-600 hover:bg-gray-50 aria-selected:bg-gray-50'}
       type="button"
       aria-selected={!!v.selected}
-      onClick={onClick}>
+      onClick={onClick}
+    >
       {label}
     </button>
   );

@@ -22,9 +22,7 @@
       "@utils": ["./src/utils/index"],
       "@utils/*": ["./src/utils/*"],
 
-      "@types": ["./src/types/index"],
-      "@types/*": ["./src/types/*"],
-
+      "@types": ["./src/types"],
       "@styles/*": ["./styles/*"],
       "@/*": ["./src/*"]
     }

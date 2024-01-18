@@ -1,19 +1,53 @@
 {
-  "name": "react-tailwind-datepicker",
+  "name": "@expanseagency/react-datepicker",
+  "description": "A simple, lightweight, accessible, and easily customizable datepicker built with React and Tailwind CSS.",
   "version": "0.1.0",
-  "private": false,
+  "main": "./dist/es/index.js",
+  "module": "./dist/es/index.js",
+  "types": "./dist/es/index.d.ts",
+  "author": "Expanse Agency",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/expanse-agency/react-datepicker.git"
+  },
+  "bugs": {
+    "url": "https://github.com/expanse-agency/react-datepicker/issues"
+  },
+  "homepage": "https://github.com/expanse-agency/react-datepicker#README",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/es/index.d.ts",
+        "default": "./dist/es/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
+    }
+  },
   "scripts": {
-    "watch": "rollup -c -w",
+    "dev": "next dev",
+    "watch": "bunchee --watch",
     "clean": "rm -rf dist",
-    "lint": "eslint --ignore-path .gitignore .",
-    "build": "npm run code-style && npm run clean && rollup -c",
-    "pub": "npm run build && npm publish",
-    "dev": "next dev"
+    "build": "pnpm run code-style:fix && pnpm run clean && bunchee",
+    "pub": "pnpm run build && pnpm publish",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "lint:fix": "eslint . --report-unused-disable-directives --max-warnings 0 --fix",
+    "fmt:fix": "prettier --cache --write \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "fmt": "prettier --check \"src/**/*.ts\" \"src/**/*.tsx\"",
+    "code-style": "pnpm run fmt && pnpm run lint",
+    "code-style:fix": "pnpm run fmt:fix && pnpm run lint:fix"
   },
   "dependencies": {
     "@radix-ui/react-popover": "^1.0.7"
   },
   "devDependencies": {
+    "bunchee": "^4.4.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
     "@types/node": "^20",
     "@types/react": "^18",

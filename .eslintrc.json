@@ -4,7 +4,9 @@
   "plugins": ["tailwindcss"],
   "rules": {
     "tailwindcss/no-custom-classname": "off",
-    "tailwindcss/classnames-order": "error"
+    "tailwindcss/classnames-order": "error",
+    "@next/next/no-html-link-for-pages": ["error", "app/"],
+    "jsx-a11y/role-supports-aria-props": "off"
   },
   "settings": {
     "tailwindcss": {

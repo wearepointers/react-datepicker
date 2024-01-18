@@ -30,6 +30,7 @@ export default function Datepicker({ value, onChange, ...rest }: Props) {
 
   return (
     <Popover.Root>
+      {/* @ts-ignore - Does not see child when compiling*/}
       <Popover.Trigger
         className={twMerge(
           'border-1 font-regular relative flex items-center justify-center gap-2 rounded-md border-gray-100 px-4 py-2 text-sm text-gray-900 shadow-xs',

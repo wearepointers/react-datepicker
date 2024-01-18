@@ -7,7 +7,6 @@ module.exports = {
   singleQuote: true,
   semi: true,
   trailingComma: 'none',
-  jsxBracketSameLine: true,
   useTabs: false,
   quoteProps: 'consistent',
 
@@ -15,9 +14,5 @@ module.exports = {
   plugins: ['prettier-plugin-tailwindcss', '@ianvs/prettier-plugin-sort-imports'],
   importOrder: ['^react(.*)$', '^next(.*)$', '', '<THIRD_PARTY_MODULES>', '<THIRD_PARTY_TYPES>', '', '^@(.*)$', '<TYPE>', '', '^[.]'],
   importOrderParserPlugins: ['typescript', 'jsx', 'decorators-legacy'],
-  importOrderTypeScriptVersion: '5.0.0',
-  importOrderSeparation: false,
-  importOrderSortSpecifiers: true,
-  importOrderMergeDuplicateImports: true,
-  importOrderCombineTypeAndValueImports: true
+  importOrderTypeScriptVersion: '5.0.0'
 };

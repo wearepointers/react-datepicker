@@ -68,7 +68,8 @@ export default function DatepickerCalendarDatesItem({ label, onClick, selected, 
         aria-selected={!!selected}
         aria-disabled={!!disabled}
         disabled={!!disabled}
-        onClick={onClick}>
+        onClick={onClick}
+      >
         {label}
       </button>
     </td>
