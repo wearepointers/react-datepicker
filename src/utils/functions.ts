@@ -81,20 +81,20 @@ export function displayDateRange(d: DatepickerValue, config: DatepickerConfig) {
 }
 
 export function displayDateValue(d: DatepickerValue, config: DatepickerConfig) {
-  if (!d) return { label: displayPlaceholder(config), hasValue: false };
+  if (!d) return { label: displayPlaceholder(config), value: undefined };
   const type = dateValueType(d, config);
 
   if (type === 'single') {
     return {
       label: formatDateString(d as Date, config),
-      hasValue: true
+      value: d as Date
     };
   }
 
   if (type === 'multiple' && Array.isArray(d) && (d as Date[]).length > 0) {
     return {
       label: (d as Date[]).map((date) => formatDateString(date, config)).join(', '),
-      hasValue: true
+      value: d as Date[]
     };
   }
 
@@ -103,26 +103,26 @@ export function displayDateValue(d: DatepickerValue, config: DatepickerConfig) {
     if (range.startDate && range.endDate) {
       return {
         label: `${formatDateString(range.startDate, config)} - ${formatDateString(range.endDate, config)}`,
-        hasValue: true
+        value: d as DateRange
       };
     }
     if (range.startDate) {
       return {
         label: `${formatDateString(range.startDate, config)} -`,
-        hasValue: true
+        value: d as DateRange
       };
     }
     if (range.endDate) {
       return {
         label: `${formatDateString(range.endDate, config)} -`,
-        hasValue: true
+        value: d as DateRange
       };
     }
   }
 
   return {
     label: displayPlaceholder(config),
-    hasValue: false
+    value: undefined
   };
 }
 

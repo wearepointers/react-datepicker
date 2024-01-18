@@ -11,10 +11,53 @@ export interface DatepickerConfig {
   dir?: 'ltr' | 'rtl';
   max?: number;
   min?: number;
+  disabled?: {
+    from?: Date;
+    to?: Date;
+  }[];
   classNames?: DatepickerConfigClassNames;
+  icons?: DatepickerConfigComponents;
 }
 
-export interface DatepickerConfigClassNames {}
+export interface DatepickerConfigComponents {
+  nextMonth?: React.ReactNode;
+  previousMonth?: React.ReactNode;
+}
+
+export interface DatepickerConfigClassNames {
+  calendarWrapper?: string;
+  calendar?: string;
+  calendarHeader?: string;
+  calendarHeaderMonth?: string;
+  calendarHeaderIconButton?: string;
+  calendarTable?: string;
+  calendarTableHeader?: string;
+  calendarTableHeaderDay?: string;
+  calendarTableBodyRow?: string;
+  calendarTableBodyRowDateWrapper?: string;
+  calendarTableBodyRowDate?: (props: {
+    focussed: boolean;
+    indicate: boolean;
+    isInRange: boolean;
+    isEndRange: boolean;
+    isStartRange: boolean;
+    isSameDay: boolean;
+    direction: 'ltr' | 'rtl';
+  }) => string;
+  expanded?: string;
+  expandedContainer?: string;
+  expandedCalendarsWrapper?: string;
+  expandedCalendar?: string;
+  footer?: string;
+  footerButtonsWrapper?: string;
+  footerDatesWrapper?: string;
+  footerDateButton?: string;
+  footerDateDivider?: string;
+  footerCloseButton?: string;
+  footerApplyButton?: string;
+  shortcuts?: string;
+  shortcutsButton?: string;
+}
 
 export type DatepickerValue = Date | Date[] | DateRange | undefined;
 

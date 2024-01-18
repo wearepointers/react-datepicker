@@ -9,7 +9,7 @@ const variants = cva(['inline-flex size-8 items-center justify-center rounded-fu
       true: ['aria-selected:bg-primary aria-selected:text-primary-foreground'],
       false: ['text-gray-300 aria-selected:bg-gray-100']
     },
-    withDot: {
+    indicate: {
       true: ['before:bg-primary before:absolute before:bottom-1 before:left-1/2 before:size-1 before:-translate-x-1/2 before:rounded-full']
     },
     isInRange: {
@@ -17,6 +17,9 @@ const variants = cva(['inline-flex size-8 items-center justify-center rounded-fu
       false: ['aria-disabled:text-gray-300 aria-disabled:hover:bg-transparent']
     },
     isEndRange: {
+      true: ['rounded-none']
+    },
+    isStartRange: {
       true: ['rounded-none']
     },
     isSameDay: {
@@ -35,7 +38,7 @@ const variants = cva(['inline-flex size-8 items-center justify-center rounded-fu
     { isEndRange: false, isInRange: true, className: 'rounded-none bg-gray-50 aria-selected:rounded-r-full', dir: 'rtl' },
     {
       focussed: false,
-      withDot: true,
+      indicate: true,
       className: 'before:bg-gray-300'
     },
     {
@@ -57,19 +60,31 @@ export interface Props extends VariantProps<typeof variants> {
   disabled?: boolean;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   dir: DatepickerConfig['dir'];
+  config: DatepickerConfig;
 }
 
-export default function DatepickerCalendarDatesItem({ label, onClick, selected, disabled, ...v }: Props) {
+export default function DatepickerCalendarDatesItem({ label, onClick, selected, disabled, config, ...v }: Props) {
   return (
-    <td className="relative p-0 text-center text-sm" role="gridcell">
+    <td className={config.classNames?.calendarTableBodyRowDateWrapper || 'relative p-0 text-center text-sm'} role="gridcell">
       <button
-        className={twMerge(variants(v))}
+        className={
+          config.classNames?.calendarTableBodyRowDate
+            ? config.classNames?.calendarTableBodyRowDate({
+                focussed: !!v.focussed,
+                indicate: !!v.indicate,
+                isInRange: !!v.isInRange,
+                isEndRange: !!v.isEndRange,
+                isStartRange: !!v.isStartRange,
+                isSameDay: !!v.isSameDay,
+                direction: v.dir || 'ltr'
+              })
+            : twMerge(variants(v))
+        }
         type="button"
         aria-selected={!!selected}
         aria-disabled={!!disabled}
         disabled={!!disabled}
-        onClick={onClick}
-      >
+        onClick={onClick}>
         {label}
       </button>
     </td>

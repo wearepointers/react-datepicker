@@ -1,20 +1,24 @@
 import * as Popover from '@radix-ui/react-popover';
+import { DatepickerConfig } from '@types';
 
 export interface Props {
   label: string;
   selected: boolean;
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   closeAfterClick?: boolean;
+  config: DatepickerConfig;
 }
 
-export default function DatepickerExpandedShortcutsItem({ label, onClick, closeAfterClick, ...v }: Props) {
+export default function DatepickerExpandedShortcutsItem({ label, onClick, closeAfterClick, config, selected }: Props) {
   const Child = () => (
     <button
-      className={'rounded-md px-4 py-2 text-start text-sm text-gray-600 hover:bg-gray-50 aria-selected:bg-gray-50'}
+      className={
+        config.classNames?.shortcutsButton ||
+        'rounded-md px-4 py-2 text-start text-sm text-gray-600 hover:bg-gray-50 aria-selected:bg-gray-50'
+      }
       type="button"
-      aria-selected={!!v.selected}
-      onClick={onClick}
-    >
+      aria-selected={!!selected}
+      onClick={onClick}>
       {label}
     </button>
   );

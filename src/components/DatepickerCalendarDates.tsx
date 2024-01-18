@@ -140,6 +140,22 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
     [config, onChange, value]
   );
 
+  const isInDisabledRange = React.useCallback(
+    (date: Date) => {
+      if (!config.disabled) return false;
+
+      for (let i = 0; i < config.disabled.length; i++) {
+        const range = config.disabled[i];
+        if ((!range.from || dateIsLessOrEq(date, range.from)) && (!range.to || dateIsMoreOrEq(date, range.to))) {
+          return true;
+        }
+      }
+
+      return false;
+    },
+    [config.disabled]
+  );
+
   const isInRange = React.useCallback(
     (date: Date) => {
       if (!value) return false;
@@ -166,6 +182,19 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
     [config.type, value]
   );
 
+  const isStartRange = React.useCallback(
+    (date: Date) => {
+      if (!value) return false;
+      if (config.type !== 'range') return false;
+
+      const v = value as DateRange;
+      if (!v.startDate || !v.endDate) return false;
+
+      return dateIsEq(v.startDate, date);
+    },
+    [config.type, value]
+  );
+
   const isSameDay = React.useCallback(
     (date: Date) => {
       if (!value) return false;
@@ -181,6 +210,8 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
 
   const isDisabled = React.useCallback(
     (date: Date) => {
+      if (isInDisabledRange(date)) return true;
+
       const type = dateValueType(value, config);
       if (type === 'single') {
         return false;
@@ -240,11 +271,11 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
   );
 
   return (
-    <table className="border-collapse" role="grid">
+    <table className={config.classNames?.calendarTable || 'border-collapse'} role="grid">
       <thead>
-        <tr className="mb-1 flex">
+        <tr className={config.classNames?.calendarTableHeader || 'mb-1 flex'}>
           {weekDays.map((day) => (
-            <th key={day.long} scope="col" className="w-8 text-xs font-medium text-gray-700">
+            <th key={day.long} scope="col" className={config.classNames?.calendarTableHeaderDay || 'w-8 text-xs font-medium text-gray-700'}>
               {day.short}
             </th>
           ))}
@@ -252,7 +283,7 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
       </thead>
       <tbody role="rowgroup">
         {generatedDates.map((week) => (
-          <tr key={week[0].toString()} className="mt-1 flex">
+          <tr key={week[0].toString()} className={config.classNames?.calendarTableBodyRow || 'mt-1 flex'}>
             {week.map((day) => (
               <DatepickerCalendarDatesItem
                 key={day.toString()}
@@ -262,10 +293,12 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
                 onClick={() => onClick(day)}
                 selected={isSelected(day)}
                 disabled={isDisabled(day)}
-                withDot={dateIsToday(day)}
+                indicate={dateIsToday(day)}
                 isInRange={isInRange(day)}
                 isEndRange={isEndRange(day)}
+                isStartRange={isStartRange(day)}
                 isSameDay={isSameDay(day)}
+                config={config}
               />
             ))}
           </tr>

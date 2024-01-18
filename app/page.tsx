@@ -3,16 +3,58 @@
 import React from 'react';
 
 import Datepicker from '@/index';
-import { DatepickerValue } from '@types';
 
 export default function Page() {
-  const [date, setDate] = React.useState<DatepickerValue>();
-  const [multipleDate, setMultipleDate] = React.useState<DatepickerValue>();
-  const [dateRange, setDateRange] = React.useState<DatepickerValue>();
+  const [date, setDate] = React.useState<Date>();
+  const [multipleDate, setMultipleDate] = React.useState<Date[]>();
+  const [dateRange, setDateRange] = React.useState<{ startDate: Date; endDate: Date }>();
 
   return (
     <div className="m-12 flex flex-col flex-wrap items-start gap-2">
       <Datepicker type="single" value={date} onChange={setDate} placeholder="Single - Normal" />
+      <Datepicker
+        type="single"
+        value={date}
+        onChange={setDate}
+        placeholder="Single - Custom styling"
+        classNames={{
+          calendar: 'bg-red-500'
+          // ...
+        }}
+      />
+      <Datepicker
+        type="single"
+        value={date}
+        onChange={setDate}
+        placeholder="Single - Custom icons"
+        icons={{
+          nextMonth: '',
+          previousMonth: ''
+        }}
+      />
+      <Datepicker type="single" value={date} onChange={setDate} placeholder="Single - Custom button">
+        {(props) => <button>{props.label}</button>}
+      </Datepicker>
+      <Datepicker
+        type="single"
+        value={date}
+        onChange={setDate}
+        placeholder="Single - Disabled"
+        disabled={[
+          {
+            from: new Date(2024, 0, 10),
+            to: new Date(2024, 0, 12)
+          },
+          {
+            from: new Date(2024, 0, 15),
+            to: new Date(2024, 0, 18)
+          },
+          {
+            from: new Date(2024, 0, 20),
+            to: new Date(2024, 0, 20)
+          }
+        ]}
+      />
       <Datepicker type="single" value={date} onChange={setDate} dir="rtl" placeholder="Single - RTL" />
       <Datepicker type="single" value={date} onChange={setDate} dir="rtl" locale="ar-SA" placeholder="Single - RTL - Locale" />
       <Datepicker type="multiple" value={multipleDate} onChange={setMultipleDate} placeholder="Multiple - Normal" />

@@ -34,8 +34,8 @@ export default function DatepickerCalendar({ config, value, onChange, month, onC
   };
 
   return (
-    <div className="inline-flex bg-white">
-      <div className={twMerge('px-4 py-3', className)}>
+    <div className={config.classNames?.calendarWrapper || 'inline-flex bg-white'}>
+      <div className={config.classNames?.calendar || twMerge('px-4 py-3', className)}>
         <DatepickerCalendarMonth config={config} month={month} toNextMonth={toNextMonth} toPreviousMonth={toPreviousMonth} />
         <DatepickerCalendarDates config={config} month={month} value={value} onChange={onChange} />
       </div>

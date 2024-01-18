@@ -39,16 +39,21 @@ export default function DatepickerExpanded({ value, onChange, config }: Props) {
   };
 
   return (
-    <div className="border-1 relative inline-flex w-min flex-col flex-wrap divide-y divide-inherit rounded-xl border-gray-100 bg-white px-0 shadow-sm md:w-auto md:flex-row md:divide-x md:divide-y-0">
+    <div
+      className={
+        config.classNames?.expanded ||
+        'border-1 relative inline-flex w-min flex-col flex-wrap divide-y divide-inherit rounded-xl border-gray-100 bg-white px-0 shadow-sm md:w-auto md:flex-row md:divide-x md:divide-y-0'
+      }>
       {hasShortcuts && <DatepickerExpandedShortcuts {...props} closeAfterClick={!hasFooter} />}
-      <div className="inline-flex flex-col divide-y divide-gray-100">
-        <div className="inline-flex  divide-x divide-gray-100">
-          <DatepickerCalendar {...props} month={month} onChangeMonth={setMonth} />
+      <div className={config.classNames?.expandedContainer || 'inline-flex flex-col divide-y divide-gray-100'}>
+        <div className={config.classNames?.expandedCalendarsWrapper || 'inline-flex divide-x divide-gray-100'}>
+          <DatepickerCalendar {...props} month={month} onChangeMonth={setMonth} className={config.classNames?.expandedCalendar} />
           <div className="hidden sm:inline-flex">
             <DatepickerCalendar
               {...props}
               month={config.dir === 'rtl' ? getPreviousMonthAndYear(month) : getNextMonthAndYear(month)}
               onChangeMonth={(m) => setMonth(config.dir === 'rtl' ? getNextMonthAndYear(m) : getPreviousMonthAndYear(m))}
+              className={config.classNames?.expandedCalendar}
             />
           </div>
         </div>
