@@ -1,6 +1,6 @@
 # React Datepicker
 
-<img alt="React Tailwindcss Datepicker" width="100" style="border-radius: 100%;" src="https://raw.githubusercontent.com/expanse-agency/react-datepicker/main/assets/calendar-icon.svg?raw=true">
+<img alt="React Tailwindcss Datepicker" width="100" style="border-radius: 100%;" src="https://raw.githubusercontent.com/wearepointers/react-datepicker/main/assets/calendar-icon.svg?raw=true">
 
 
 Modular date picker component for React using the native date class. Supports single, multiple and range.
@@ -26,24 +26,24 @@ Modular date picker component for React using the native date class. Supports si
 ### Install via pnpm
 
 ```sh
-pnpm install @expanselabs/react-datepicker
+pnpm install @wearepointers/react-datepicker
 ```
 
 ### Install via npm
 
 ```sh
-npm install @expanselabs/react-datepicker
+npm install @wearepointers/react-datepicker
 ```
 
 ### Install via yarn
 
 ```sh
-yarn add @expanselabs/react-datepicker
+yarn add @wearepointers/react-datepicker
 ```
 
 ## Current Version
 
-![Different pick modes](https://raw.githubusercontent.com/expanse-agency/react-datepicker/main/assets/react-datepicker-modes.jpg?raw=true)
+![Different pick modes](https://raw.githubusercontent.com/wearepointers/react-datepicker/main/assets/react-datepicker-modes.jpg?raw=true)
 
 ## Usage
 This is an example usage with different modes. Go to the [example](./app/page.tsx) to see all possible options.
@@ -51,7 +51,7 @@ This is an example usage with different modes. Go to the [example](./app/page.ts
 ```jsx
 import * as React from 'react';
 
-import Datepicker from '@expanseagency/react-datepicker';
+import Datepicker from '@wearepointers/react-datepicker';
 
 export default function Page() {
   const [date, setDate] = React.useState<Date>();
@@ -90,8 +90,8 @@ yarn install && yarn dev
 The playground runs on `http://localhost:3000`
 
 ## Contributing
-See [CONTRIBUTING.md](https://github.com/expanse-agency/react-datepicker/blob/main/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/wearepointers/react-datepicker/blob/main/CONTRIBUTING.md)
 
 ## License
 
-[MIT](LICENSE) Licensed. Copyright (c) Expanse Agency 2024
+[MIT](LICENSE) Licensed. Copyright (c) Pointers 2024

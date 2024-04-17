@@ -41,7 +41,7 @@ git push origin branch-name
 
 ## Reporting Issues
 
-If you encounter any issues or have suggestions for improvements, please feel free to (create an issue on React Datepicker's GitHub repository)[https://github.com/expanse-agency/react-datepicker/issues/new]. When reporting issues, please provide as much detail as possible to help in understanding and addressing the problem effectively.
+If you encounter any issues or have suggestions for improvements, please feel free to (create an issue on React Datepicker's GitHub repository)[https://github.com/wearepointers/react-datepicker/issues/new]. When reporting issues, please provide as much detail as possible to help in understanding and addressing the problem effectively.
 
 ---
 
