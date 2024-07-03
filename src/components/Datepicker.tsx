@@ -1,4 +1,4 @@
-import { ReactNode, useState } from 'react';
+import * as React from 'react';
 
 import { twMerge } from 'tailwind-merge';
 
@@ -17,11 +17,11 @@ interface ButtonProps<T extends DatepickerValue> {
 interface Props<T extends DatepickerValue> extends DatepickerConfig {
   value: T;
   onChange: (date: T) => void;
-  children?: (props: ButtonProps<T>) => ReactNode;
+  children?: (props: ButtonProps<T>) => React.ReactNode;
 }
 
 export default function Datepicker<T extends DatepickerValue>({ value, onChange, children, ...props }: Props<T>) {
-  const [month, setMonth] = useState({
+  const [month, setMonth] = React.useState({
     month: new Date().getMonth(),
     year: new Date().getFullYear()
   });
