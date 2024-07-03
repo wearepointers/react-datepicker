@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import * as Popover from '@radix-ui/react-popover';
 import { DatepickerConfig } from '@types';
 
