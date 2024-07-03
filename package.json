@@ -67,6 +67,11 @@
   "dependencies": {
     "@radix-ui/react-popover": "^1.0.7"
   },
+  "peerDependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "tailwindcss": "^3"
+  },
   "devDependencies": {
     "bunchee": "^4.4.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
