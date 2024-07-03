@@ -1,7 +1,7 @@
 {
   "name": "@wearepointers/react-datepicker",
   "description": "A simple, lightweight, accessible, and easily customizable datepicker built with React and Tailwind CSS.",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "./dist/es/index.js",
   "module": "./dist/es/index.js",
   "types": "./dist/es/index.d.ts",
