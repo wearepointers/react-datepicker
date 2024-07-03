@@ -64,10 +64,8 @@
     "code-style": "pnpm run fmt && pnpm run lint",
     "code-style:fix": "pnpm run fmt:fix && pnpm run lint:fix"
   },
-  "dependencies": {
-    "@radix-ui/react-popover": "^1.0.7"
-  },
   "peerDependencies": {
+    "@radix-ui/react-popover": "^1.0.7",
     "react": "^18 || ^19",
     "react-dom": "^18 || ^19",
     "tailwindcss": "^3"
