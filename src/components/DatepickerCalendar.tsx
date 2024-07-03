@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { twMerge } from 'tailwind-merge';
 
 import { DatepickerConfig, DatepickerMonth, DatepickerValue } from '@types';

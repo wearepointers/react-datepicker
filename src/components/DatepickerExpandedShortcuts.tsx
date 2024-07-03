@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { DatepickerConfig, DatepickerValue } from '@types';
 import { dateRangeTypes, displayDateRangeType, getDateRange, isEqualToRange } from '@utils';
 

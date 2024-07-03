@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import * as React from 'react';
 
 import { DatepickerConfig, DatepickerMonth, DatepickerValue, DateRange } from '@types';
 import {
@@ -23,9 +23,9 @@ interface Props {
 }
 
 export default function DatepickerCalendarDates({ config, month, value, onChange }: Props) {
-  const generatedDates = useMemo(() => generate42CalendarDates(month, config), [month, config]);
+  const generatedDates = React.useMemo(() => generate42CalendarDates(month, config), [month, config]);
 
-  const weekDays = useMemo(() => {
+  const weekDays = React.useMemo(() => {
     const today = new Date();
     const days: {
       short: string;
@@ -47,7 +47,7 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
     return days;
   }, [config.dir, config.locale, config.weeksStartOnMonday]);
 
-  const isSelected = useCallback(
+  const isSelected = React.useCallback(
     (date: Date) => {
       if (!value) return false;
       const type = dateValueType(value, config);
@@ -81,7 +81,7 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
     [value, config]
   );
 
-  const onClick = useCallback(
+  const onClick = React.useCallback(
     (d: Date) => {
       const type = dateValueType(value, config);
       if (type === 'single') {
@@ -140,7 +140,7 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
     [config, onChange, value]
   );
 
-  const isInDisabledRange = useCallback(
+  const isInDisabledRange = React.useCallback(
     (date: Date) => {
       if (!config.disabled) return false;
 
@@ -156,7 +156,7 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
     [config.disabled]
   );
 
-  const isInRange = useCallback(
+  const isInRange = React.useCallback(
     (date: Date) => {
       if (!value) return false;
       if (config.type !== 'range') return false;
@@ -169,7 +169,7 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
     [config.type, value]
   );
 
-  const isEndRange = useCallback(
+  const isEndRange = React.useCallback(
     (date: Date) => {
       if (!value) return false;
       if (config.type !== 'range') return false;
@@ -182,7 +182,7 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
     [config.type, value]
   );
 
-  const isStartRange = useCallback(
+  const isStartRange = React.useCallback(
     (date: Date) => {
       if (!value) return false;
       if (config.type !== 'range') return false;
@@ -195,7 +195,7 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
     [config.type, value]
   );
 
-  const isSameDay = useCallback(
+  const isSameDay = React.useCallback(
     (date: Date) => {
       if (!value) return false;
       if (config.type !== 'range') return false;
@@ -208,7 +208,7 @@ export default function DatepickerCalendarDates({ config, month, value, onChange
     [config.type, value]
   );
 
-  const isDisabled = useCallback(
+  const isDisabled = React.useCallback(
     (date: Date) => {
       if (isInDisabledRange(date)) return true;
 
