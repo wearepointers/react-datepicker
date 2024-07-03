@@ -20,7 +20,12 @@ interface Props<T extends DatepickerValue> extends DatepickerConfig {
   children?: (props: ButtonProps<T>) => React.ReactNode;
 }
 
-export default function Datepicker<T extends DatepickerValue>({ value, onChange, children, ...props }: Props<T>) {
+export default function Datepicker<T extends DatepickerValue>({
+  value,
+  onChange,
+  children,
+  ...props
+}: Props<T> & Omit<React.ComponentPropsWithoutRef<typeof Popover.Trigger>, 'children' | 'onChange' | 'value' | 'type'>) {
   const [month, setMonth] = React.useState({
     month: new Date().getMonth(),
     year: new Date().getFullYear()
@@ -37,7 +42,7 @@ export default function Datepicker<T extends DatepickerValue>({ value, onChange,
   return (
     <Popover.Root>
       {/* @ts-ignore - Does not see child when compiling*/}
-      <Popover.Trigger asChild>
+      <Popover.Trigger {...props} asChild>
         {children ? (
           children({
             label: displayValue.label,
