@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 
 import { DatepickerConfig, DatepickerValue, DateRange } from '@types';
 import { dateValueType, getNextMonthAndYear, getPreviousMonthAndYear } from '@utils';
@@ -14,8 +14,8 @@ interface Props {
 }
 
 export default function DatepickerExpanded({ value, onChange, config }: Props) {
-  const [internalValue, setInternalValue] = React.useState(value);
-  const [month, setMonth] = React.useState({
+  const [internalValue, setInternalValue] = useState(value);
+  const [month, setMonth] = useState({
     month: new Date().getMonth(),
     year: new Date().getFullYear()
   });
